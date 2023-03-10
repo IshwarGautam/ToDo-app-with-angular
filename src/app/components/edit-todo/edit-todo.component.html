@@ -1,0 +1,59 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Todo</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit()" [formGroup]="requiredForm">
+          <div class="form-group">
+            <label for="title">Todo Title</label>
+            <input
+              type="text"
+              [(ngModel)]="title"
+              class="form-control"
+              id="title"
+              name="title"
+              formControlName="title"
+            />
+          </div>
+          <div class="form-group">
+            <label for="desc">Todo Description</label>
+            <input
+              type="text"
+              class="form-control"
+              name="desc"
+              id="desc"
+              [(ngModel)]="desc"
+              formControlName="desc"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-sm btn-primary mt-3"
+            data-bs-dismiss="modal"
+            [disabled]="
+              requiredForm.controls['title'].invalid ||
+              requiredForm.controls['desc'].invalid
+            "
+          >
+            Update Todo
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

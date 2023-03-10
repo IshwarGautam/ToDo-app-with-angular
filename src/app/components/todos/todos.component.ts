@@ -9,6 +9,8 @@ import { Component } from '@angular/core';
 export class TodosComponent {
   localItem: string | null;
   todos: Todo[];
+  todo: Todo;
+  index: number;
 
   constructor() {
     this.localItem = localStorage.getItem('todos');
@@ -30,6 +32,17 @@ export class TodosComponent {
 
   addTodo(todo: Todo) {
     this.todos.push(todo);
+
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
+
+  setTodo(todo: Todo) {
+    this.todo = todo;
+    this.index = this.todos.indexOf(todo);
+  }
+
+  updateTodo(todo: Todo) {
+    this.todos[this.index] = { ...todo };
 
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }

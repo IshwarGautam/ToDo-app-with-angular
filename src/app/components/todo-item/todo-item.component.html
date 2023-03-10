@@ -13,6 +13,14 @@
     <p [ngClass]="{ strike: !todo.active }">{{ todo.desc }}</p>
   </div>
   <div class="col-sm-1 d-flex align-items-center">
+    <button
+      class="btn btn-sm btn-primary m-3"
+      (click)="passTodo(todo)"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Edit
+    </button>
     <button class="btn btn-sm btn-danger" (click)="onClick(todo)">
       Delete
     </button>

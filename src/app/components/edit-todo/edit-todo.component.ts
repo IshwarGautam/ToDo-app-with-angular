@@ -1,31 +1,35 @@
 import { Todo } from 'src/app/Todo';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CustomValidator } from 'src/app/customValidator';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-add-todo',
-  templateUrl: './add-todo.component.html',
-  styleUrls: ['./add-todo.component.css'],
+  selector: 'app-edit-todo',
+  templateUrl: './edit-todo.component.html',
+  styleUrls: ['./edit-todo.component.css'],
 })
-export class AddTodoComponent implements OnInit {
-  title: string;
-  desc: string;
-  @Output() todoAdd: EventEmitter<Todo> = new EventEmitter();
+export class EditTodoComponent {
+  @Input() todo: Todo;
+  @Output() todoUpdate: EventEmitter<Todo> = new EventEmitter();
 
-  ngOnInit(): void {}
+  title: string = '';
+  desc: string = '';
+
+  ngOnChanges() {
+    if (this.todo) {
+      this.title = this.todo.title;
+      this.desc = this.todo.desc;
+    }
+  }
 
   onSubmit() {
     const todo = {
       title: this.title,
       desc: this.desc,
-      active: true,
+      active: this.todo.active,
     };
 
-    this.title = '';
-    this.desc = '';
-
-    this.todoAdd.emit(todo);
+    this.todoUpdate.emit(todo);
   }
 
   //Create FormGroup

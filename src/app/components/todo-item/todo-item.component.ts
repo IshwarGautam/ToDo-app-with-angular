@@ -12,6 +12,7 @@ export class TodoItemComponent implements OnInit {
   @Input() i: number;
   @Output() todoDelete: EventEmitter<Todo> = new EventEmitter();
   @Output() todoCheckbox: EventEmitter<Todo> = new EventEmitter();
+  @Output() getTodo: EventEmitter<Todo> = new EventEmitter();
 
   constructor() {}
 
@@ -23,5 +24,9 @@ export class TodoItemComponent implements OnInit {
 
   onCheckboxClick(todo: Todo) {
     this.todoCheckbox.emit(todo);
+  }
+
+  passTodo(todo: Todo) {
+    this.getTodo.emit(todo);
   }
 }
