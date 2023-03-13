@@ -17,13 +17,13 @@ export class AddTodoComponent implements OnInit {
 
   onSubmit() {
     const todo = {
-      title: this.title,
-      desc: this.desc,
+      title: this.requiredForm.controls['title'].value.trim(),
+      desc: this.requiredForm.controls['desc'].value.trim(),
       active: true,
     };
 
-    this.title = '';
-    this.desc = '';
+    this.requiredForm.controls['title'].setValue('');
+    this.requiredForm.controls['desc'].setValue('');
 
     this.todoAdd.emit(todo);
   }

@@ -1,5 +1,5 @@
-<div class="my-3 border row">
-  <div class="col-md-auto">
+<div class="my-3 border row item-color" [ngClass]="{ 'bg-snow': !todo.active }">
+  <div class="col-md-auto mt-2">
     <input
       type="checkbox"
       class="form-check-input"
@@ -8,7 +8,7 @@
       [checked]="!todo.active"
     />
   </div>
-  <div class="col-sm-10">
+  <div class="col-sm-10 mt-2">
     <h5 [ngClass]="{ 'text-success': !todo.active }">{{ todo.title }}</h5>
     <p [ngClass]="{ strike: !todo.active }">{{ todo.desc }}</p>
   </div>

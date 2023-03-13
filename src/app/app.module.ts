@@ -19,7 +19,7 @@ import { EditTodoComponent } from './components/edit-todo/edit-todo.component';
     AboutComponent,
     EditTodoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

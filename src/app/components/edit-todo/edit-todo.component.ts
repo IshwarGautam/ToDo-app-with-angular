@@ -17,15 +17,15 @@ export class EditTodoComponent {
 
   ngOnChanges() {
     if (this.todo) {
-      this.title = this.todo.title;
-      this.desc = this.todo.desc;
+      this.requiredForm.controls['title'].setValue(this.todo.title);
+      this.requiredForm.controls['desc'].setValue(this.todo.desc);
     }
   }
 
   onSubmit() {
     const todo = {
-      title: this.title,
-      desc: this.desc,
+      title: this.requiredForm.controls['title'].value.trim(),
+      desc: this.requiredForm.controls['desc'].value.trim(),
       active: this.todo.active,
     };
 

@@ -1,14 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <a class="navbar-brand" routerLink="/">Todos List</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/about">About Project</a>
-        </li>
-      </ul>
-    </div>
+<div class="dashboard">
+  <ul class="list">
+    <li class="todo-list">
+      <a routerLink="/" [ngClass]="{ active: url === '/' }">Todo List</a>
+    </li>
+    <li>
+      <a routerLink="/about" [ngClass]="{ active: url === '/about' }"
+        >About Project</a
+      >
+    </li>
+  </ul>
+  <div class="dashboard-content">
+    <router-outlet></router-outlet>
   </div>
-</nav>
-
-<router-outlet></router-outlet>
+</div>
